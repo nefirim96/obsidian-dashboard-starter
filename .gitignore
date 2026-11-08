@@ -1,0 +1,14 @@
+dashboard/index.html
+dashboard/config.json
+dashboard/serve.log
+dashboard/data/*.json
+dashboard/data/*.jsonl
+!dashboard/data/*.example.json
+.obsidian/workspace*
+.obsidian/cache
+.trash/
+.DS_Store
+Thumbs.db
+node_modules/
+**/_backup/
+*.tmp
