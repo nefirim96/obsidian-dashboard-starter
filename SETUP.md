@@ -3,6 +3,7 @@
 > 이 문서는 AI(Claude Code, Antigravity, Cursor, Gemini CLI, ChatGPT 등)가 사용자의 직업과 업무에 딱 맞는 **개인 AI 업무노트(세컨드 브레인 + 대시보드 + 집·회사 무료 동기화)**를 처음부터 끝까지 자동으로 구축할 수 있도록 작성된 실행 매뉴얼입니다.
 >
 > - 안내 페이지: https://arcai.kro.kr/worknote
+> - 50가지 세컨드브레인 질문지: https://arcai.kro.kr/worknote/questions-50.md
 > - 공개 스타터 템플릿(GitHub): https://github.com/nefirim96/obsidian-dashboard-starter
 > - GitHub 비공개 저장소 1초 생성: https://github.com/nefirim96/obsidian-dashboard-starter/generate
 > - Vercel 무료 웹 대시보드 원클릭 배포: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnefirim96%2Fobsidian-dashboard-starter&project-name=my-ai-worknote&repository-name=my-ai-worknote
@@ -31,16 +32,14 @@
 
 ---
 
-## 1단계: 맞춤형 인터뷰 (1~2개씩 짧게 질문)
+## 1단계: 50가지 질문 기반 맞춤형 인터뷰
 
-아래 항목을 차례대로 짧게 물어봅니다.
+먼저 `https://arcai.kro.kr/worknote/questions-50.md` (로컬에 `QUESTIONS_50.md`가 있으면 해당 파일)을 읽고, 사용자에게 두 가지 모드 중 하나를 고르게 합니다.
 
-1. **이름(또는 별명)과 하는 일** — 직무, 업종, 회사원 / 프리랜서 / 학생 / 창작자 등
-2. **지식을 모을 핵심 분야 3~6개** — 예: 자금·회계, 보고서·기획, 영업, 개발, 유튜브·릴스, 공부. 각 분야가 **업무(work)**인지 **개인·창작(create)**인지도 함께 파악합니다.
-3. **자주 반복해서 귀찮은 작업 2~4개** — AI 스킬(`.claude/skills/`)로 자동화할 후보 (예: 주간 보고서 초안, 회의록 정리, 메일 답장 초안, 릴스 대본 작성)
-4. **정해진 시간에 챙기고 싶은 일** — 루틴(`routines/`) 후보 (예: 매일 아침 오늘 일정·할 일 브리핑, 매주 금요일 주간 지식 정리)
-5. **집 PC와 회사 PC를 같이 쓰는지 여부** — 같이 쓴다면 각 PC에서 주로 볼 분야와 사내 보안 파일(엑셀·한글 등) 차단 필요 여부
-6. **선호하는 AI 말투** — 예: 간결하게 결론부터 / 친절하고 자세하게
+- **모드 A — 50가지 전체 질문으로 정밀 구축 (추천)**: 5개 파트(역할·지식체계·반복스킬·AI규칙·보안/동기화) × 10문항을 **한 번에 3~5개씩** 대화하듯 질문해 완벽한 맞춤형 세컨드브레인을 설계합니다. (모르는 항목은 "건너뛰기" 가능)
+- **모드 B — 핵심 10문항 빠른 구축 (5분)**: 50문항 중 ★ 표시가 붙은 핵심 10개만 빠르게 묻고 나머지는 직무에 맞는 기본값으로 자동 채웁니다.
+
+> **개인정보 보호 필수 규칙**: 인터뷰 답변이나 업로드 자료에 실명, 전화번호, 이메일, 계좌번호, 비밀번호, API 키, 사내 기밀 수치가 들어 있으면 절대 원문 그대로 저장하지 않고 비식별화(`<비공개>`, `<회사명>`)하거나 `.gitignore`로 차단된 `company-local/`에만 격리합니다.
 
 ---
 
@@ -171,6 +170,20 @@ company-local/*
    - 아래 링크를 클릭하면 내 GitHub 저장소와 연결되어 약 15초 만에 무료 웹 대시보드 주소가 생성됩니다.
    - 원클릭 배포: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnefirim96%2Fobsidian-dashboard-starter&project-name=my-ai-worknote&repository-name=my-ai-worknote
    - 이미 내 비공개 저장소를 만들었다면 https://vercel.com/new 에서 본인 저장소만 선택해 **Deploy**를 누르면 `vercel.json` 설정대로 자동 빌드됩니다.
+
+---
+
+## 6단계: AI와 대화한 모든 지식·스킬 세컨드브레인 자동 업로드 (지속 축적)
+
+구축이 끝난 뒤에도 사용자가 AI(Claude, ChatGPT, Gemini, Cursor 등)와 대화하며 얻은 모든 노하우와 스킬이 세컨드브레인에 계속 쌓이도록 아래 2가지 스킬을 기본 포함하고 사용법을 안내합니다.
+
+1. **대화 지식·스킬 일괄 업로드 (`.claude/skills/chat-to-brain/SKILL.md`)**
+   - 현재 대화나 과거 ChatGPT·Claude·Gemini 대화 텍스트/내보내기 파일을 주면:
+     1) **개인정보·사내 기밀 자동 필터링(비식별화)** 수행
+     2) 영구 지식(`second-brain/<허브>/`), 날짜별 기억(`MEMORY/`), 반복 실행형 스킬(`.claude/skills/`) 3종으로 자동 분류
+     3) 사용자 승인 후 저장 → `node dashboard/build.mjs` 검증 → GitHub & 웹 대시보드 자동 반영
+2. **세션 마무리 자동 동기화 (`.claude/skills/wrap-up/SKILL.md`)**
+   - 작업이 끝날 때 "작업 마무리해줘" 또는 `/wrap-up` 한 마디로 이번 세션의 결정·해결법·새 스킬을 개인정보 없이 세컨드브레인에 기록하고 푸시합니다.
 
 ---
 
