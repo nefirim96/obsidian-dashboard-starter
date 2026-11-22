@@ -1,0 +1,4 @@
+{
+  "buildCommand": "node dashboard/build.mjs",
+  "outputDirectory": "dashboard"
+}

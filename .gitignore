@@ -12,3 +12,19 @@ Thumbs.db
 node_modules/
 **/_backup/
 *.tmp
+*.lock
+.claude/worktrees/
+
+# 회사 내부 보안 데이터 및 민감 파일 (절대 외부 업로드 금지)
+company-local/*
+!company-local/README.md
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+*.hwp
+*.hwpx
+*.pfx
+*.key
+.env
+.env.*
